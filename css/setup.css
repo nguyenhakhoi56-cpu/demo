@@ -1,4 +1,13 @@
-@charset "UTF-8";
+/* list00 */
+.list00{display: flex;flex-wrap: wrap;gap: 10px;}
+.list00 > li{width: calc((100% - 10px)/2);}
+.list00 > li{min-height: 162px;padding: 20px;background-color: #eee;border: 1px solid #ddd;border-radius: 5px;}
+.list00 > li > .txt{}
+.list00 > li > .txt > .txt01{}
+.list00 > li > .txt > .txt02{}
+@media(max-width:768px){
+    .list00 > li{width: 100%;}
+}
 
 /* list01 */
 .list01{display: flex;flex-wrap: wrap;gap: 10px;}

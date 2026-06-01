@@ -71,6 +71,33 @@ $(function () {
             htmlLines.push('</div>');
             return htmlLines.join('\n');
         }
+        if (type === 'list00') {
+            const isLink = useLink;
+            htmlLines.push('<ul class="list00">');
+            for (let i = 1; i <= itemQty; i++) {
+                htmlLines.push('    <li>');
+                if (isLink) {
+                    htmlLines.push('        <a href="#a" title="Text01">');
+                    htmlLines.push('            <div class="txt">');
+                    for (let t = 1; t <= textQty; t++) {
+                        const numStr = String(t).padStart(2, '0');
+                        htmlLines.push('                <p class="txt' + numStr + '">Text' + numStr + '</p>');
+                    }
+                    htmlLines.push('            </div>');
+                    htmlLines.push('        </a>');
+                } else {
+                    htmlLines.push('        <div class="txt">');
+                    for (let t = 1; t <= textQty; t++) {
+                        const numStr = String(t).padStart(2, '0');
+                        htmlLines.push('            <p class="txt' + numStr + '">Text' + numStr + '</p>');
+                    }
+                    htmlLines.push('        </div>');
+                }
+                htmlLines.push('    </li>');
+            }
+            htmlLines.push('</ul>');
+            return htmlLines.join('\n');
+        }
         if (type === 'list01' || type === 'list02' || type === 'list03' || type === 'list04') {
             const imgSrc = (type === 'list04') ? 'img/img.jpg' : '/img/ico-img.png';
             const isLink = (type === 'list04') ? true : useLink;
@@ -191,12 +218,14 @@ $(function () {
                 displayStyle = (type === 'list02' || type === 'list03') ? 'display: flex;' : 'display: block;';
             }
             outputLines.push('.' + type + ' > li > a{' + displayStyle + styleProps + '}');
-            outputLines.push('.' + type + ' > li > a > .img{' + imgContainerProps + '}');
-            outputLines.push('.' + type + ' > li > a > .img > img{' + imgProps + '}');
+            if (type !== 'list00') {
+                outputLines.push('.' + type + ' > li > a > .img{' + imgContainerProps + '}');
+                outputLines.push('.' + type + ' > li > a > .img > img{' + imgProps + '}');
+            }
             outputLines.push('.' + type + ' > li > a > .txt{' + txtProps + '}');
 
             const hoverRule = parsedLines.find(x => x.selector.includes(':hover'));
-            if (hoverRule) {
+            if (hoverRule && type !== 'list00') {
                 outputLines.push('.' + type + ' > li > a:hover > .img > img{' + hoverRule.props + '}');
             }
 
@@ -209,12 +238,14 @@ $(function () {
         } else {
             outputLines.push('.' + type + ' > li{' + widthProps + '}');
             outputLines.push('.' + type + ' > li{' + styleProps + '}');
-            outputLines.push('.' + type + ' > li > .img{' + imgContainerProps + '}');
-            outputLines.push('.' + type + ' > li > .img > img{' + imgProps + '}');
+            if (type !== 'list00') {
+                outputLines.push('.' + type + ' > li > .img{' + imgContainerProps + '}');
+                outputLines.push('.' + type + ' > li > .img > img{' + imgProps + '}');
+            }
             outputLines.push('.' + type + ' > li > .txt{' + txtProps + '}');
 
             const hoverRule = parsedLines.find(x => x.selector.includes(':hover'));
-            if (hoverRule) {
+            if (hoverRule && type !== 'list00') {
                 outputLines.push('.' + type + ' > li:hover > .img > img{' + hoverRule.props + '}');
             }
 
