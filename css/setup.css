@@ -50,7 +50,7 @@
 
 /* list04 */
 .list04{display: flex;flex-wrap: wrap;gap: 20px;}
-.list04 > li{width: calc((100% - 20px)/2);}
+.list04 > li{width: calc((100% - 40px)/3);}
 .list04 > li > a{display: block;}
 .list04 > li > a > .img{width: 100%;aspect-ratio: 2/1;overflow: hidden;border-radius: 5px;}
 .list04 > li > a > .img > img{width: 100%;height: 100%;object-fit: cover;object-position: center;transition: transform 0.5s ease 0s;}
