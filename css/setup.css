@@ -58,6 +58,9 @@
 .list04 > li > a > .txt{padding: 15px;}
 .list04 > li > a > .txt > .txt01{}
 .list04 > li > a > .txt > .txt02{}
+@media(max-width:1024px){
+    .list04 > li{width: calc((100% - 20px)/2);}
+}
 @media(max-width:768px){
     .list04 > li{width: 100%;}
 }
