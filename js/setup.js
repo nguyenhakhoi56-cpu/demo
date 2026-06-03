@@ -278,13 +278,7 @@ $(function () {
         e.preventDefault();
         const $item = $(this).closest('.main-item');
         const dataType = $item.attr('data-type');
-        let defaultQty = 1;
-        if (dataType === 'list05' || dataType === 'list06') {
-            defaultQty = 3;
-        } else if (dataType === 'list07') {
-            defaultQty = 1;
-        }
-        const itemQty = parseInt($item.find('.so_item').val()) || defaultQty;
+        const itemQty = 1;
         const textQty = parseInt($item.find('.so_text').val()) || 2;
         const useLink = $item.find('.use_link_chk').is(':checked');
         const generatedHTML = html(dataType, itemQty, textQty, useLink);
