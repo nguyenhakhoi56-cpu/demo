@@ -307,7 +307,7 @@ $(function () {
 // gnb mobile
 $(function () {
     // nút mở menu di động
-    $('.openmenu > a').on('click', function (e) {
+    $('.openmenu > a').on('click touchstart', function (e) {
         e.preventDefault();
         if ($('body').hasClass('mmenu-open')) {
             closeAllExcept(null);
@@ -317,7 +317,7 @@ $(function () {
         }
         updateHeaderAction();
     });
-    $('.gnb-mobile-inner .depth01 > li > a').on('click', function (e) {
+    $('.gnb-mobile-inner .depth01 > li > a').on('click touchstart', function (e) {
         e.preventDefault();
         $('.gnb-mobile-inner .depth01 > li').removeClass('active');
         $(this).parent('li').addClass('active');
@@ -753,7 +753,7 @@ $(function () {
 // gnb mobile
 $(function () {
     // nút mở menu di động
-    $('.openmenu > a').on('click', function (e) {
+    $('.openmenu > a').on('click touchstart', function (e) {
         e.preventDefault();
         if ($('body').hasClass('mmenu-open')) {
             closeAllExcept(null);
@@ -763,7 +763,7 @@ $(function () {
         }
         updateHeaderAction();
     });
-    $('.gnb-mobile-inner .depth01 > li > a').on('click', function (e) {
+    $('.gnb-mobile-inner .depth01 > li > a').on('click touchstart', function (e) {
         e.preventDefault();
         $('.gnb-mobile-inner .depth01 > li').removeClass('active');
         $(this).parent('li').addClass('active');
