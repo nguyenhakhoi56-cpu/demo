@@ -186,7 +186,7 @@ function cleanRawFigma(code) {
    const lines = cleaned.split(/[\n;]/);
    const declarations = [];
    const lastIndexMap = new Map();
-   const fontProps = new Set(['font-family', 'font-style', 'font-weight', 'font-size', 'line-height', 'letter-spacing', 'color']);
+   const fontProps = new Set(['font-family', 'font-style', 'font-weight', 'font-size', 'line-height', 'letter-spacing', 'color', 'text-transform']);
 
    let index = 0;
    for (let line of lines) {
@@ -225,7 +225,7 @@ function cleanRawFigma(code) {
 
       if (shouldStartNew) {
          if (currentGroup.length > 0) {
-            groups.push('{' + currentGroup.join('') + '}');
+            groups.push(currentGroup.join(''));
          }
          currentGroup = [];
          currentGroupProps = new Set();
@@ -239,10 +239,13 @@ function cleanRawFigma(code) {
    }
 
    if (currentGroup.length > 0) {
-      groups.push('{' + currentGroup.join('') + '}');
+      groups.push(currentGroup.join(''));
    }
 
    const uniqueGroups = Array.from(new Set(groups));
+   if (uniqueGroups.length > 1) {
+      return uniqueGroups.map(g => '{' + g + '}').join('\n');
+   }
    return uniqueGroups.join('\n');
 }
 
